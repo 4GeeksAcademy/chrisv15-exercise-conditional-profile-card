@@ -26,21 +26,38 @@ function render(variables = {}) {
   console.log("These are the current variables: ", variables); //print on the console
   // here we ask the logical questions to make decisions on how to build the html
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
+
+  let background = document.querySelector("[for=includeCover]");
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
+  let name = document.querySelector("[for=name]").value;
+  let lastname = document.querySelector("[for=lastname]").value;
+  let job = document.querySelector("[for=role]").value;
+  let location =
+    document.querySelector("[for=city]").value +
+    ", " +
+    document.querySelector("[for=country]").value;
+
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
+  let position = document.querySelector("[for=socialMediaPosition]").value;
+
+  let twitter = document.querySelector("[for=twitter]").value;
+  let github = document.querySelector("[for=github]").value;
+  let linkedin = document.querySelector("[for=linkedin]").value;
+  let instagram = document.querySelector("[for=instagram]").value;
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${name} ${lastname}</h1>
+          <h2>${job}</h2>
+          <h3>${location}</h3>
+          <ul class="${position}">
+
+            <li><a href="https://twitter.com/${twitter}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${github}"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/${linkedin}"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${instagram}"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
